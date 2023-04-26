@@ -1,12 +1,13 @@
 
 import React from "react";
 
-import { Link, Route, Routes } from "react-router-dom";
-
+import {  Route, Routes } from "react-router-dom";
+// import AuthPage from "./pages/AuthPage";
 import { Home } from "./Home";
-// import Regitration from "./Regitration";
+import Regitration from "./Regitration";
 import Login from "./Login";
 import "./App.css"
+import { Admin } from "./Admin";
 
 function App() {
 
@@ -20,8 +21,10 @@ function App() {
         <Routes>
 
           <Route path='/' element={<Home />} />
-          {/* <Route path='/register' element={<Regitration />} /> */}
+          <Route path='/register' element={<Regitration />} />
           <Route path='/login' element={<Login />} />
+          <Route path='/admin' element={<Admin />} />
+          {/* <Route path='/admin' element={<AuthPage />} /> */}
         </Routes>
       </div>
 

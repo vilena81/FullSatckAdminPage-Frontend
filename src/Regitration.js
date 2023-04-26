@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { AutoComplete, Button, Form, Input, Select } from 'antd';
 import { useNavigate } from 'react-router-dom';
-
+import { Link } from "react-router-dom"; 
 
 export default function Regitration() {
 
@@ -19,12 +19,11 @@ export default function Regitration() {
         })
         const data = await response.json();
         if (data.message === "User created") {
+           localStorage.setItem('user',JSON.stringify(values)) 
             navigate('/login')
-
         }
         console.log(data)
     }
-
 
     const { Option } = Select;
     const residences = [
@@ -103,7 +102,8 @@ export default function Regitration() {
 
     return (
         <div className="reg">
-            <h2 className="title-reg">Registration</h2>
+            <h2 className="title-reg">User Registration</h2>
+            <Link to='/login'>Log in</Link>
             <Form
                 {...formItemLayout}
                 form={form}
@@ -118,23 +118,7 @@ export default function Regitration() {
                 }}
                 scrollToFirstError
             >
-                <Form.Item
-                    name="email"
-                    label="E-mail"
-                    rules={[
-                        {
-                            type: 'email',
-                            message: 'The input is not valid E-mail!',
-                        },
-                        {
-                            required: true,
-                            message: 'Please input your E-mail!',
-                        },
-                    ]}
-                >
-                    <Input />
-                </Form.Item>
-
+            
                 <Form.Item
                     name="userName"
                     label="User Name"
@@ -181,6 +165,22 @@ export default function Regitration() {
                 </Form.Item>
 
                 <Form.Item
+                    name="email"
+                    label="E-mail"
+                    rules={[
+                        {
+                            type: 'email',
+                            message: 'The input is not valid E-mail!',
+                        },
+                        {
+                            required: true,
+                            message: 'Please input your E-mail!',
+                        },
+                    ]}
+                >
+                    <Input />
+                </Form.Item>
+                <Form.Item
                     name="password"
                     label="Password"
                     rules={[
@@ -198,6 +198,7 @@ export default function Regitration() {
                     <Button type="primary" htmlType="submit" >
                         Register
                     </Button>
+                    
                 </Form.Item>
             </Form>
         </div>

@@ -86,9 +86,9 @@ const Login = () => {
 
     const navigate = useNavigate()
 
-    async function submitRegister(values) {
+    async function submitLogin(values) {
         console.log(values, 111)
-        const response = await fetch("https://localhost:3001/login", {
+        const response = await fetch("http://localhost:3001/login", {
             method: 'POST',
             body: JSON.stringify(values),
             headers: {
@@ -96,9 +96,8 @@ const Login = () => {
             },
         })
         const data = await response.json();
-        if (data.message === "Logged in") {
-            navigate('/')
-
+        if (data.status === "Logged in") {
+            navigate('/admin')
         }
         console.log(data)
     }
@@ -108,32 +107,32 @@ const Login = () => {
     //     console.log('Received values of form: ', values);
     // };
 
-    const [autoCompleteResult, setAutoCompleteResult] = useState([]);
-    const onWebsiteChange = (value) => {
-        if (!value) {
-            setAutoCompleteResult([]);
-        } else {
-            setAutoCompleteResult(['.com', '.org', '.net'].map((domain) => `${value}${domain}`));
-        }
-    };
-    const websiteOptions = autoCompleteResult.map((website) => ({
-        label: website,
-        value: website,
-    }));
+    // const [autoCompleteResult, setAutoCompleteResult] = useState([]);
+    // const onWebsiteChange = (value) => {
+    //     if (!value) {
+    //         setAutoCompleteResult([]);
+    //     } else {
+    //         setAutoCompleteResult(['.com', '.org', '.net'].map((domain) => `${value}${domain}`));
+    //     }
+    // };
+    // const websiteOptions = autoCompleteResult.map((website) => ({
+    //     label: website,
+    //     value: website,
+    // }));
 
 
     return (
 
         <div>
             <div>
-                <Link to='/'>Home</Link>
+                
             </div>
             <h1 className="title-login">Login</h1>
             <Form
                 {...formItemLayout}
                 form={form}
                 name="login"
-                onFinish={submitRegister}
+                onFinish={submitLogin}
                 initialValues={{
                     residence: ['zhejiang', 'hangzhou', 'xihu'],
                     prefix: '86',
@@ -177,7 +176,7 @@ const Login = () => {
 
                 <Form.Item {...tailFormItemLayout}>
                     <Button type="primary" htmlType="submit">
-                        Register
+                        Login
                     </Button>
                 </Form.Item>
             </Form>
