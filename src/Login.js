@@ -7,14 +7,7 @@ import { useNavigate } from 'react-router-dom';
 
 
 const Login = () => {
-    // const [data, setData] = useState([]);
-
-    // useEffect(() => {
-    //     fetch("http://localhost:3000/register")
-    //    .then(response => response.json())
-    //     .then(response => setData(response.message))
-    //    .chatch(error => console.log(error))
-    //   }, [])
+   
 
     const { Option } = Select;
     const residences = [
@@ -82,10 +75,7 @@ const Login = () => {
         },
     };
 
-
-
     const navigate = useNavigate()
-
     async function submitLogin(values) {
         console.log(values, 111)
         const response = await fetch("http://localhost:3001/login", {
@@ -96,6 +86,7 @@ const Login = () => {
             },
         })
         const data = await response.json();
+        localStorage.setItem('token',data.jwt);
         if (data.status === "Logged in") {
             navigate('/admin')
         }
@@ -103,30 +94,11 @@ const Login = () => {
     }
 
     const [form] = Form.useForm();
-    // const onFinish = (values) => {
-    //     console.log('Received values of form: ', values);
-    // };
-
-    // const [autoCompleteResult, setAutoCompleteResult] = useState([]);
-    // const onWebsiteChange = (value) => {
-    //     if (!value) {
-    //         setAutoCompleteResult([]);
-    //     } else {
-    //         setAutoCompleteResult(['.com', '.org', '.net'].map((domain) => `${value}${domain}`));
-    //     }
-    // };
-    // const websiteOptions = autoCompleteResult.map((website) => ({
-    //     label: website,
-    //     value: website,
-    // }));
-
-
+   
     return (
 
         <div>
-            <div>
-                
-            </div>
+           
             <h1 className="title-login">Login</h1>
             <Form
                 {...formItemLayout}

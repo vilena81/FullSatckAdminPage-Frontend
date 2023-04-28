@@ -6,9 +6,9 @@ export const Home = () => {
     <div>
         <div>
           <h1>Welcome to shop</h1>
-        {/* <Link to='/register'>Registration</Link> */}
         
-        <Link to='/register'>Registarion</Link>
+        
+        <Link to='/login'>Login</Link>
       </div>
     </div>
   )

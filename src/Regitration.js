@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { AutoComplete, Button, Form, Input, Select } from 'antd';
 import { useNavigate } from 'react-router-dom';
-import { Link } from "react-router-dom"; 
+import { Link } from "react-router-dom";
 
 export default function Regitration() {
 
@@ -19,7 +19,7 @@ export default function Regitration() {
         })
         const data = await response.json();
         if (data.message === "User created") {
-           localStorage.setItem('user',JSON.stringify(values)) 
+            localStorage.setItem('user', JSON.stringify(values))
             navigate('/login')
         }
         console.log(data)
@@ -104,103 +104,108 @@ export default function Regitration() {
         <div className="reg">
             <h2 className="title-reg">User Registration</h2>
             <Link to='/login'>Log in</Link>
-            <Form
-                {...formItemLayout}
-                form={form}
-                name="register"
-                onFinish={submitRegister}
-                initialValues={{
-                    residence: ['zhejiang', 'hangzhou', 'xihu'],
-                    prefix: '86',
-                }}
-                style={{
-                    maxWidth: 600,
-                }}
-                scrollToFirstError
-            >
-            
-                <Form.Item
-                    name="userName"
-                    label="User Name"
-                    rules={[
-                        {
-                            required: true,
-                            message: 'Please input userName!',
-                        },
-                    ]}
+            <div className="forma" >
+
+                <Form
+                    {...formItemLayout}
+                    form={form}
+                    name="register"
+                    onFinish={submitRegister}
+                    initialValues={{
+                        residence: ['zhejiang', 'hangzhou', 'xihu'],
+                        prefix: '86',
+                    }}
+                    style={{
+
+                        maxWidth: 600,
+                    }}
+                    scrollToFirstError
                 >
-                    <AutoComplete options={websiteOptions} onChange={onWebsiteChange} placeholder="user name">
+
+                    <Form.Item
+                        name="userName"
+                        label="User Name"
+                        rules={[
+                            {
+                                required: true,
+                                message: 'Please input userName!',
+                            },
+                        ]}
+                    >
+                        <AutoComplete options={websiteOptions} onChange={onWebsiteChange} placeholder="user name">
+                            <Input />
+                        </AutoComplete>
+                    </Form.Item>
+
+                    <Form.Item
+                        name="firstName"
+                        label="First Name"
+                        rules={[
+                            {
+                                required: true,
+                                message: 'Please input firstName!',
+                            },
+                        ]}
+                    >
+                        <AutoComplete options={websiteOptions} onChange={onWebsiteChange} placeholder="first name">
+                            <Input />
+                        </AutoComplete>
+                    </Form.Item>
+
+                    <Form.Item
+                        name="lastName"
+                        label="Last Name"
+                        rules={[
+                            {
+                                required: true,
+                                message: 'Please input lastName!',
+                            },
+                        ]}
+                    >
+                        <AutoComplete options={websiteOptions} onChange={onWebsiteChange} placeholder="last name">
+                            <Input />
+                        </AutoComplete>
+                    </Form.Item>
+
+                    <Form.Item
+                        name="email"
+                        label="E-mail"
+                        rules={[
+                            {
+                                type: 'email',
+                                message: 'The input is not valid E-mail!',
+                            },
+                            {
+                                required: true,
+                                message: 'Please input your E-mail!',
+                            },
+                        ]}
+                    >
                         <Input />
-                    </AutoComplete>
-                </Form.Item>
+                    </Form.Item>
+                    <Form.Item
+                        name="password"
+                        label="Password"
+                        rules={[
+                            {
+                                required: true,
+                                message: 'Please input your password!',
+                            },
+                        ]}
+                        hasFeedback
+                    >
+                        <Input.Password />
+                    </Form.Item>
 
-                <Form.Item
-                    name="firstName"
-                    label="First Name"
-                    rules={[
-                        {
-                            required: true,
-                            message: 'Please input firstName!',
-                        },
-                    ]}
-                >
-                    <AutoComplete options={websiteOptions} onChange={onWebsiteChange} placeholder="first name">
-                        <Input />
-                    </AutoComplete>
-                </Form.Item>
+                    <Form.Item {...tailFormItemLayout} >
+                        <Button type="primary" htmlType="submit" >
+                            SIGN
+                        </Button>
 
-                <Form.Item
-                    name="lastName"
-                    label="Last Name"
-                    rules={[
-                        {
-                            required: true,
-                            message: 'Please input lastName!',
-                        },
-                    ]}
-                >
-                    <AutoComplete options={websiteOptions} onChange={onWebsiteChange} placeholder="last name">
-                        <Input />
-                    </AutoComplete>
-                </Form.Item>
+                    </Form.Item>
+                </Form>
+            </div>
 
-                <Form.Item
-                    name="email"
-                    label="E-mail"
-                    rules={[
-                        {
-                            type: 'email',
-                            message: 'The input is not valid E-mail!',
-                        },
-                        {
-                            required: true,
-                            message: 'Please input your E-mail!',
-                        },
-                    ]}
-                >
-                    <Input />
-                </Form.Item>
-                <Form.Item
-                    name="password"
-                    label="Password"
-                    rules={[
-                        {
-                            required: true,
-                            message: 'Please input your password!',
-                        },
-                    ]}
-                    hasFeedback
-                >
-                    <Input.Password />
-                </Form.Item>
-
-                <Form.Item {...tailFormItemLayout} >
-                    <Button type="primary" htmlType="submit" >
-                        Register
-                    </Button>
-                    
-                </Form.Item>
-            </Form>
         </div>
     )
 }

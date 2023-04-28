@@ -1,7 +1,12 @@
 import React from 'react'
+import Header from "./pages/Header";
+
 
 export const Admin = () => {
   return (
-    <div>Admin</div>
+    <div>
+      {/* <Header/> */}
+      
+    </div>
   )
 }
