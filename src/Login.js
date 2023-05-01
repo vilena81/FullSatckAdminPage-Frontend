@@ -1,12 +1,13 @@
 
 import React, { useState } from "react";
-import {  Button, Form, Input, Select } from 'antd';
+
+import { Button, Form, Input, Select } from 'antd';
 import { Link } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
 
 
 const Login = () => {
-   
+
 
     const { Option } = Select;
     const residences = [
@@ -74,6 +75,8 @@ const Login = () => {
         },
     };
 
+
+
     const navigate = useNavigate()
     async function submitLogin(values) {
         console.log(values, 111)
@@ -82,10 +85,11 @@ const Login = () => {
             body: JSON.stringify(values),
             headers: {
                 "Content-Type": "application/json ; charset=UTF-8",
+                Authorization: localStorage.getItem("token"),
             },
         })
         const data = await response.json();
-        localStorage.setItem('token',data.jwt);
+        localStorage.setItem('token', data.token);
         if (data.status === "Logged in") {
             navigate('/admin')
         }
@@ -93,65 +97,64 @@ const Login = () => {
     }
 
     const [form] = Form.useForm();
-   
+
     return (
 
         <div className="reg">
-           
             <h1 className="title-reg">Login</h1>
-            <div className="forma" >
-            <Form
-                {...formItemLayout}
-                form={form}
-                name="login"
-                onFinish={submitLogin}
-                initialValues={{
-                    residence: ['zhejiang', 'hangzhou', 'xihu'],
-                    prefix: '86',
-                }}
-                style={{
-                    maxWidth: 600,
-                }}
-                scrollToFirstError
-            >
-                <Form.Item
-                    name="email"
-                    label="E-mail"
-                    rules={[
-                        {
-                            type: 'email',
-                            message: 'The input is not valid E-mail!',
-                        },
-                        {
-                            required: true,
-                            message: 'Please input your E-mail!',
-                        },
-                    ]}
+            <div className="forma">
+                <Form
+                    {...formItemLayout}
+                    form={form}
+                    name="login"
+                    onFinish={submitLogin}
+                    initialValues={{
+                        residence: ['zhejiang', 'hangzhou', 'xihu'],
+                        prefix: '86',
+                    }}
+                    style={{
+                        maxWidth: 600,
+                    }}
+                    scrollToFirstError
                 >
-                    <Input />
-                </Form.Item>
+                    <Form.Item
+                        name="email"
+                        label="E-mail"
+                        rules={[
+                            {
+                                type: 'email',
+                                message: 'The input is not valid E-mail!',
+                            },
+                            {
+                                required: true,
+                                message: 'Please input your E-mail!',
+                            },
+                        ]}
+                    >
+                        <Input />
+                    </Form.Item>
 
-                <Form.Item
-                    name="password"
-                    label="Password"
-                    rules={[
-                        {
-                            required: true,
-                            message: 'Please input your password!',
-                        },
-                    ]}
-                    hasFeedback
-                >
-                    <Input.Password />
-                </Form.Item>
+                    <Form.Item
+                        name="password"
+                        label="Password"
+                        rules={[
+                            {
+                                required: true,
+                                message: 'Please input your password!',
+                            },
+                        ]}
+                        hasFeedback
+                    >
+                        <Input.Password />
+                    </Form.Item>
 
 
-                <Form.Item {...tailFormItemLayout}>
-                    <Button type="primary" htmlType="submit">
-                        Login
-                    </Button>
-                </Form.Item>
-            </Form>
+                    <Form.Item {...tailFormItemLayout}>
+                        <Button type="primary" htmlType="submit">
+                            Login
+                        </Button>
+                    </Form.Item>
+                </Form>
             </div>
         </div>
     );
