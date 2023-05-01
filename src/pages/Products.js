@@ -73,28 +73,6 @@ const Products = () => {
     }
   }
   
-  // const handleDelete = async (productId) => {
-  //   console.log(123)
-  //   const token = localStorage.getItem('token');
-  //   try {
-  //     const response = await fetch(`http://localhost:3001/products/${productId}`, {
-  //       method: 'DELETE',
-  //       headers: {
-  //         'Content-Type': 'application/json',
-  //         Authorization: token,
-  //       },
-  //       body: JSON.stringify(productId),
-  //     });
-  //     const data = await response.json();
-  //     if (response.status == 204) {
-  //       setFormSubmitted(true);
-  //     } else {
-  //       console.error(response.status, response.statusText);
-  //     }
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
 
   const handleDelete = async (productId) => {
     try {

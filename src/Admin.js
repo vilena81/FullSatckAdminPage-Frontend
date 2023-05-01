@@ -5,8 +5,7 @@ import Header from "./pages/Header";
 export const Admin = () => {
   return (
     <div>
-      {/* <Header/> */}
-      
+     <h2>Admin page</h2>
     </div>
   )
 }
