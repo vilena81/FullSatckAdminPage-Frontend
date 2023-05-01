@@ -103,7 +103,7 @@ export default function Regitration() {
     return (
         <div className="reg">
             <h2 className="title-reg">User Registration</h2>
-            <Link to='/login'>Log in</Link>
+            
             <div className="forma" >
 
                 <Form

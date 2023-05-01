@@ -20,17 +20,17 @@ const navigate=useNavigate()
             <Link to="/">Home</Link>
           </li>
           <li>
-            <Link to="/category">Category</Link>
+            <Link to="/products">Products</Link>
           </li>
           <li>
-            <Link to="/products">Products</Link>
+            <Link to="/category">Category</Link>
           </li>
           <li>
             <Link to="/addproducts">Add Products</Link>
           </li>
-          {/* <li>
-            <Link>Blog</Link>
-          </li> */}
+          <li>
+          <Link to="/addcategory">Add Category</Link>
+          </li>
           <li>
             <Link to="/login">Sign in</Link>
           </li>

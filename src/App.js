@@ -11,7 +11,7 @@ import Products from "./pages/Products";
 import Category from "./pages/Category";
 import Header from "./pages/Header";
 import AddProduct from "./pages/AddProduct";
-
+import AddCategory from "./pages/AddCategory";
 
 function App() {
 
@@ -28,6 +28,8 @@ function App() {
           <Route path='/products' element={<Products />} />
           <Route path='/category' element={<Category />} />
           <Route path='/addproducts' element={<AddProduct />} />
+          <Route path='/addcategory' element={<AddCategory />} />
+
         </Routes>
       </div>
 

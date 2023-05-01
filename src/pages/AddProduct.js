@@ -59,10 +59,9 @@ import React ,{ useState, useForm } from "react";
         console.log("An error occurred while creating the product:", error);
       }
 
-value('')
+value("")
 
     }
-    
     
     return (
       <div  className="addprod">

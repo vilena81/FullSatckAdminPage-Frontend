@@ -1,6 +1,5 @@
 
 import React, { useState } from "react";
-
 import {  Button, Form, Input, Select } from 'antd';
 import { Link } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
@@ -97,9 +96,10 @@ const Login = () => {
    
     return (
 
-        <div>
+        <div className="reg">
            
-            <h1 className="title-login">Login</h1>
+            <h1 className="title-reg">Login</h1>
+            <div className="forma" >
             <Form
                 {...formItemLayout}
                 form={form}
@@ -152,6 +152,7 @@ const Login = () => {
                     </Button>
                 </Form.Item>
             </Form>
+            </div>
         </div>
     );
 };
