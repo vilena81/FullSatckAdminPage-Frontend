@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { AutoComplete, Button, Form, Input, Select } from 'antd';
 import { useNavigate } from 'react-router-dom';
-import { Link } from "react-router-dom";
+
 
 export default function Regitration() {
 
@@ -10,11 +10,12 @@ export default function Regitration() {
 
     async function submitRegister(values) {
         console.log(values, 111)
-        const response = await fetch("https://localhost:3001/register", {
+        const response = await fetch("http://localhost:3001/register", {
             method: 'POST',
             body: JSON.stringify(values),
             headers: {
                 "Content-Type": "application/json ; charset=UTF-8",
+                // Authorization: localStorage.getItem("token"),
             },
         })
         const data = await response.json();
@@ -121,6 +122,21 @@ export default function Regitration() {
                     }}
                     scrollToFirstError
                 >
+
+{/* <Form.Item
+                        name="role"
+                        label="User Role"
+                        rules={[
+                            {
+                                required: true,
+                                message: 'Please input userRole!',
+                            },
+                        ]}
+                    >
+                        <AutoComplete options={websiteOptions} onChange={onWebsiteChange} placeholder="user name">
+                            <Input />
+                        </AutoComplete>
+                    </Form.Item> */}
 
                     <Form.Item
                         name="userName"

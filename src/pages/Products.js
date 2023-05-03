@@ -51,7 +51,7 @@ const Products = () => {
     updatedDataSource.splice(index, 1, { ...values, key: editRow })
     setProducts(updatedDataSource)
     setEditRow(null)
-    // const token = localStorage.getItem('token');
+    const token = localStorage.getItem('token');
     try {
       const response = await fetch(`http://localhost:3001/products/${editRow}`, {
         method: 'PUT',
@@ -156,6 +156,7 @@ const Products = () => {
 
                     >
                       <Input />
+                      
                     </Form.Item>
                   )
                 } else {
@@ -244,7 +245,7 @@ const Products = () => {
               }
             },
           ]}
-            dataSource={products.map(product => ({ ...product, key: product.id }))}
+            dataSource={products.map(product => ({  key: product.id, name:product.name, price:product.price, img:<img alt="Eco cup..." src={product.img} width="80px"/>, quantity:product.quantity, categoryId:product.categoryId }))}
           >
           </Table>
         </Space>

@@ -65,7 +65,7 @@ value("")
     
     return (
       <div  className="addprod">
-        <div >
+        <div className="addproded">
       <Form
       id="success-message"
         {...formItemLayout}
@@ -78,6 +78,7 @@ value("")
         }}
         style={{
           maxWidth: 600,
+         
         }}
         scrollToFirstError
       >
@@ -118,8 +119,10 @@ value("")
         
         ]}
       >
-        <Input placeholder="   for URL image" />
+        <Input placeholder="   for URL image"  />
       </Form.Item>
+     
+      
         <Form.Item
           name="quantity"
           label="Quantity"

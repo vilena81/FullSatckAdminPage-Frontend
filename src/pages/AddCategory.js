@@ -60,7 +60,7 @@ const formItemLayout = {
   return(
    
 <div  className="registerCont">
-      <div className="registerChild">
+      <div className="category">
     <Form
     id="success-message"
       {...formItemLayout}

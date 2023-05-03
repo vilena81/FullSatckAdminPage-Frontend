@@ -41,7 +41,14 @@
    justify-content: center;
   
 }
-.home{
-  
- 
+.ant-form{
+  background-color: #E2D4CB;
+ padding: 60px;
+
+}
+.addprod, .category{
+display: flex;
+justify-content: center;
+
+
 }
