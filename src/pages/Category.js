@@ -98,6 +98,27 @@ const Category = () => {
                     <Typography.Title level={4} >Categories</Typography.Title>
                     <Table columns={[
                         {
+                            title: "Category Id",
+                            dataIndex: "id",
+                            render: (text, record) => {
+                                if (editRow === record.key) {
+                                    return (
+                                        <Form.Item
+                                            name="id"
+                                            rules={[{
+                                                required: true,
+                                                message: "Please enter category id",
+                                            }]}
+                                        >
+                                            <Input />
+                                        </Form.Item>
+                                    )
+                                } else {
+                                    return <p>{text}</p>
+                                }
+                            }
+                        },
+                        {
                             title: "Category Name",
                             dataIndex: "name",
                             render: (text, record) => {
@@ -127,6 +148,7 @@ const Category = () => {
                                     <Button type='link' onClick={() => {
                                         setEditRow(record.key);
                                         form.setFieldsValue({
+                                            id:record.id,
                                             name: record.name
 
                                         })
@@ -140,6 +162,7 @@ const Category = () => {
                                         onClick={() => {
                                             handleDelete(record.id);
                                             form.setFieldsValue({
+                                                id:record.id,
                                                 name: record.id
                                             })
                                         }}
@@ -148,7 +171,7 @@ const Category = () => {
                             }
                         },
                     ]}
-                        dataSource={categories.map(category => ({ ...category, key: category.id }))}
+                        dataSource={categories.map(category => ({  key: category.id, id:category.id, name:category.name }))}
                     >
                     </Table>
                 </Space>

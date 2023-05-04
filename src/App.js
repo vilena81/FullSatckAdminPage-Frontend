@@ -12,6 +12,7 @@ import Category from "./pages/Category";
 import Header from "./pages/Header";
 import AddProduct from "./pages/AddProduct";
 import AddCategory from "./pages/AddCategory";
+import Users from "./pages/Users";
 
 function App() {
 
@@ -29,7 +30,7 @@ function App() {
           <Route path='/category' element={<Category />} />
           <Route path='/addproducts' element={<AddProduct />} />
           <Route path='/addcategory' element={<AddCategory />} />
-
+          <Route path='/user' element={<Users />} />
         </Routes>
       </div>
 

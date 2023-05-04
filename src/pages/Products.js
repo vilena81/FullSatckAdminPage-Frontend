@@ -99,6 +99,27 @@ const Products = () => {
           <Typography.Title level={4} >Inventory</Typography.Title>
           <Table columns={[
             {
+              title: "Product Id",
+              dataIndex: "id",
+              render: (text, record) => {
+                if (editRow === record.key) {
+                  return (
+                    <Form.Item
+                      name="name"
+                      rules={[{
+                        required: true,
+                        message: "Please enter product id",
+                      }]}
+                    >
+                      <Input />
+                    </Form.Item>
+                  )
+                } else {
+                  return <p>{text}</p>
+                }
+              }
+            },
+            {
               title: "Product Name",
               dataIndex: "name",
               render: (text, record) => {
@@ -217,6 +238,7 @@ const Products = () => {
                   <Button type='link' onClick={() => {
                     setEditRow(record.key);
                     form.setFieldsValue({
+                      id:record.id,
                       name: record.name,
                       categoryId: record.categoryId,
                       quantity: record.quantity,
@@ -233,6 +255,7 @@ const Products = () => {
                     onClick={() => {
                       handleDelete(record.key);
                       form.setFieldsValue({
+                        id:record.id,
                         name: record.name,
                         categoryId: record.categoryId,
                         quantity: record.quantity,
@@ -245,7 +268,7 @@ const Products = () => {
               }
             },
           ]}
-            dataSource={products.map(product => ({  key: product.id, name:product.name, price:product.price, img:<img alt="Eco cup..." src={product.img} width="80px"/>, quantity:product.quantity, categoryId:product.categoryId }))}
+            dataSource={products.map(product => ({  key: product.id, id:product.id, name:product.name, price:product.price, img:<img alt="Eco cup..." src={product.img} width="80px"/>, quantity:product.quantity, categoryId:product.categoryId }))}
           >
           </Table>
         </Space>

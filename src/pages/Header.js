@@ -20,6 +20,9 @@ const navigate=useNavigate()
             <Link to="/">Home</Link>
           </li>
           <li>
+            <Link to="/user">Users</Link>
+          </li>
+          <li>
             <Link to="/products">Products</Link>
           </li>
           <li>

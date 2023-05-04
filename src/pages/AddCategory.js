@@ -10,7 +10,7 @@ const navigate = useNavigate()
 async function addCategory(values) {
     
   console.log(values)
-  const response = await fetch("http://localhost:3001/addcategory", {
+  const response = await fetch("http://localhost:3001/category", {
       method: 'POST',
       body: JSON.stringify(values),
       headers: {
