@@ -85,7 +85,7 @@ const Login = () => {
             body: JSON.stringify(values),
             headers: {
                 "Content-Type": "application/json ; charset=UTF-8",
-                Authorization: localStorage.getItem("token"),
+                // Authorization: localStorage.getItem("token"),
             },
         })
         const data = await response.json();
@@ -93,7 +93,15 @@ const Login = () => {
         if (data.status === "Logged in") {
             navigate('/admin')
         }
-        console.log(data)
+        // if(data.token && data.role===0){
+        //     navigate('/admin') 
+        // }else if(data.token && data.role===1){
+        //     navigate('/') 
+        // }
+        // // console.log(data)
+        // if(data.error){
+        //     setError(data.error);
+        //     }
     }
 
     const [form] = Form.useForm();

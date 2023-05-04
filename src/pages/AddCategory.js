@@ -5,10 +5,11 @@ import { useNavigate } from 'react-router-dom';
 
 
 const AddCategory = () => {
+const navigate = useNavigate() 
 
-const navigate = useNavigate()
 async function addCategory(values) {
-    
+
+   
   console.log(values)
   const response = await fetch("http://localhost:3001/category", {
       method: 'POST',
@@ -19,8 +20,9 @@ async function addCategory(values) {
   })
   const data = await response.json();
   console.log(data)
+  navigate('/category')
   if (response.status !==201) {
-     navigate('/')
+   
   }
   console.log(data)
 }
