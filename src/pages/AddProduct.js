@@ -1,6 +1,7 @@
 
 import {Button, Form,Input} from "antd";
 import React ,{ useState, useForm } from "react";
+import { useNavigate } from 'react-router-dom';
     
   const formItemLayout = {
     labelCol: {
@@ -35,6 +36,7 @@ import React ,{ useState, useForm } from "react";
   const AddProduct = () => {
     const [form] = Form.useForm();
 
+    const navigate = useNavigate()
     async function addProduct(value) {
       console.log(value);
       const token = localStorage.getItem('token');
@@ -50,10 +52,12 @@ import React ,{ useState, useForm } from "react";
         });
     
         const data = await response.json();
-        
+        localStorage.setItem('token', data.token);
         if (data.status === "Product Created") {
+          navigate('/products')
            const successMessage = document.getElementById("success-message");
         successMessage.textContent = "Product created successfully!";
+        
         }
       } catch (error) {
         console.log("An error occurred while creating the product:", error);
